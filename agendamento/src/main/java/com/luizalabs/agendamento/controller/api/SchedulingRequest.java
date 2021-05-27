@@ -2,6 +2,10 @@ package com.luizalabs.agendamento.controller.api;
 
 import java.util.Date;
 
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+
 public class SchedulingRequest {
 
     private String id;
@@ -15,50 +19,64 @@ public class SchedulingRequest {
         return id;
     }
 
-    public void setId(String id) {
+    public SchedulingRequest setId(String id) {
         this.id = id;
+        return this;
     }
 
     public Date getScheduledDate() {
         return scheduledDate;
     }
 
-    public void setScheduledDate(Date scheduledDate) {
+    public SchedulingRequest setScheduledDate(Date scheduledDate) {
         this.scheduledDate = scheduledDate;
+        return this;
     }
 
     public String getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(String recipient) {
+    public SchedulingRequest setRecipient(String recipient) {
         this.recipient = recipient;
+        return this;
     }
 
     public String getNotificationType() {
         return notificationType;
     }
 
-    public void setNotificationType(String notificationType) {
+    public SchedulingRequest setNotificationType(String notificationType) {
         this.notificationType = notificationType;
+        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public SchedulingRequest setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public SchedulingRequest setMessage(String message) {
         this.message = message;
+        return this;
     }
 
-
+    public Scheduling toEntity(){
+        return new Scheduling()
+                .setId(getId())
+                .setScheduledDate(getScheduledDate())
+                .setNotificationType(NotificationType.valueOf(getNotificationType()))
+                .setRecipient(getRecipient())
+                .setMessage(getMessage())
+                .setStatus(NotificationStatus.valueOf(getStatus()));
+    }
 
 }

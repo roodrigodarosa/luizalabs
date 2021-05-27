@@ -5,10 +5,9 @@ import java.util.Date;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import com.luizalabs.agendamento.builder.SchedulingBuilder;
 import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.model.enums.NotificationType;
 import com.luizalabs.agendamento.model.enums.NotificationStatus;
+import com.luizalabs.agendamento.model.enums.NotificationType;
 import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
 
 public class SchedulingValidatorTest {
@@ -33,7 +32,7 @@ public class SchedulingValidatorTest {
         scheduling.setScheduledDate(null);
         Assertions.assertThatThrownBy(() -> SchedulingValidator.validate(scheduling))
                 .isInstanceOf(SchedulingBadRequestException.class)
-                .hasMessage("Data de está nulo.");
+                .hasMessage("Data de agendamento está nulo.");
     }
 
     @Test
@@ -105,13 +104,12 @@ public class SchedulingValidatorTest {
     }
 
     private Scheduling buildScheduling() {
-        return SchedulingBuilder.of().
-                id("scheduling-id")
-                .dateToSend(new Date(new Date().getTime() + 999999))
-                .message("Mensagem de agendamento")
-                .recipient("teste@luizalabs.com.br")
-                .recipientType(NotificationType.EMAIL)
-                .status(NotificationStatus.NOT_SENT)
-                .build();
+        return new Scheduling().
+                setId("scheduling-id")
+                .setScheduledDate(new Date(new Date().getTime() + 999999))
+                .setMessage("Mensagem de agendamento")
+                .setRecipient("teste@luizalabs.com.br")
+                .setNotificationType(NotificationType.EMAIL)
+                .setStatus(NotificationStatus.NOT_SENT);
     }
 }

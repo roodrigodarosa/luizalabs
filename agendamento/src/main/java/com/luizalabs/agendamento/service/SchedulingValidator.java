@@ -17,7 +17,7 @@ public class SchedulingValidator {
             throw new SchedulingBadRequestException("Scheduling está nulo.");
         }
         if (scheduling.getScheduledDate() == null) {
-            throw new SchedulingBadRequestException("Data de está nulo.");
+            throw new SchedulingBadRequestException("Data de agendamento está nulo.");
         }
         if (scheduling.getRecipient() == null || scheduling.getRecipient().isEmpty()) {
             throw new SchedulingBadRequestException("Destinatário está nulo ou vazio.");

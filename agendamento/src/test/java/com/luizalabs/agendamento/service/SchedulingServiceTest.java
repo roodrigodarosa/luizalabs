@@ -17,12 +17,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.luizalabs.agendamento.builder.SchedulingBuilder;
 import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.model.enums.NotificationType;
 import com.luizalabs.agendamento.model.enums.NotificationStatus;
-import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
+import com.luizalabs.agendamento.model.enums.NotificationType;
 import com.luizalabs.agendamento.repository.SchedulingRepository;
+import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SchedulingServiceTest {
@@ -91,14 +90,13 @@ public class SchedulingServiceTest {
     @Test
     public void whenFindAllSchedulingThenReturnOk() throws Exception {
         Scheduling scheduling = buildScheduling();
-        Scheduling scheduling2 = SchedulingBuilder.of().
-                id("scheduling-id-2")
-                .dateToSend(new Date(new Date().getTime() + 999999))
-                .message("Mensagem de agendamento-2")
-                .recipient("47999560651")
-                .recipientType(NotificationType.WHATSAPP)
-                .status(NotificationStatus.SENT)
-                .build();
+        Scheduling scheduling2 = new Scheduling()
+                .setId("scheduling-id-2")
+                .setScheduledDate(new Date(new Date().getTime() + 999999))
+                .setMessage("Mensagem de agendamento-2")
+                .setRecipient("47999560651")
+                .setNotificationType(NotificationType.WHATSAPP)
+                .setStatus(NotificationStatus.SENT);
         List<Scheduling> schedulingList = Arrays.asList(scheduling, scheduling2);
 
         when(repository.findAll()).thenReturn(schedulingList);
@@ -124,14 +122,13 @@ public class SchedulingServiceTest {
     }
 
     private Scheduling buildScheduling() {
-        return SchedulingBuilder.of().
-                id("scheduling-id")
-                .dateToSend(new Date(new Date().getTime() + 999999))
-                .message("Mensagem de agendamento")
-                .recipient("teste@luizalabs.com.br")
-                .recipientType(NotificationType.EMAIL)
-                .status(NotificationStatus.NOT_SENT)
-                .build();
+        return new Scheduling().
+                setId("scheduling-id")
+                .setScheduledDate(new Date(new Date().getTime() + 999999))
+                .setMessage("Mensagem de agendamento")
+                .setRecipient("teste@luizalabs.com.br")
+                .setNotificationType(NotificationType.EMAIL)
+                .setStatus(NotificationStatus.NOT_SENT);
     }
 
 }
