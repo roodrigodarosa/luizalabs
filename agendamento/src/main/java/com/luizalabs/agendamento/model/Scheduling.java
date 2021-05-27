@@ -1,6 +1,4 @@
-package com.luizalabs.agendamento.domain;
-
-import static com.luizalabs.agendamento.enums.StatusEnum.NOT_SENT;
+package com.luizalabs.agendamento.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,8 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.luizalabs.agendamento.enums.RecipientTypeEnum;
-import com.luizalabs.agendamento.enums.StatusEnum;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
 
 @Entity
 @Table(name = "scheduling")
@@ -31,22 +29,22 @@ public class Scheduling implements Serializable {
     @Column(name = "ID", length = 36, nullable = false, updatable = false)
     private String id;
 
-    @Column(name = "DATE_TO_SEND", nullable = false)
-    private Date dateToSend;
+    @Column(name = "SCHEDULED_DATE", nullable = false)
+    private Date scheduledDate;
 
     @Column(name = "RECIPIENT", nullable = false)
     private String recipient;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "RECIPIENT_TYPE", nullable = false)
-    private RecipientTypeEnum recipientType;
+    @Column(name = "NOTIFICATION_TYPE", nullable = false)
+    private NotificationType notificationType;
 
     @Column(name = "MESSAGE", length = 1000, nullable = false)
     private String message;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", nullable = false)
-    private StatusEnum status = NOT_SENT;
+    private NotificationStatus status;
 
     public String getId() {
         return id;
@@ -56,12 +54,12 @@ public class Scheduling implements Serializable {
         this.id = id;
     }
 
-    public Date getDateToSend() {
-        return dateToSend;
+    public Date getScheduledDate() {
+        return scheduledDate;
     }
 
-    public void setDateToSend(Date dateToSend) {
-        this.dateToSend = dateToSend;
+    public void setScheduledDate(Date dateToSend) {
+        this.scheduledDate = dateToSend;
     }
 
     public String getRecipient() {
@@ -72,12 +70,12 @@ public class Scheduling implements Serializable {
         this.recipient = recipient;
     }
 
-    public RecipientTypeEnum getRecipientType() {
-        return recipientType;
+    public NotificationType getNotificationType() {
+        return notificationType;
     }
 
-    public void setRecipientType(RecipientTypeEnum recipientType) {
-        this.recipientType = recipientType;
+    public void setNotificationType(NotificationType recipientType) {
+        this.notificationType = recipientType;
     }
 
     public String getMessage() {
@@ -88,11 +86,11 @@ public class Scheduling implements Serializable {
         this.message = message;
     }
 
-    public StatusEnum getStatus() {
+    public NotificationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(NotificationStatus status) {
         this.status = status;
     }
 
@@ -100,9 +98,9 @@ public class Scheduling implements Serializable {
     public String toString() {
         return "Scheduling{" +
                 "id='" + id + '\'' +
-                ", dateToSend=" + dateToSend +
+                ", dateToSend=" + scheduledDate +
                 ", recipient='" + recipient + '\'' +
-                ", recipientType=" + recipientType +
+                ", recipientType=" + notificationType +
                 ", message='" + message + '\'' +
                 ", status=" + status +
                 '}';
@@ -118,15 +116,15 @@ public class Scheduling implements Serializable {
         }
         Scheduling that = (Scheduling) o;
         return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getDateToSend(), that.getDateToSend()) &&
+                Objects.equals(getScheduledDate(), that.getScheduledDate()) &&
                 Objects.equals(getRecipient(), that.getRecipient()) &&
-                getRecipientType() == that.getRecipientType() &&
+                getNotificationType() == that.getNotificationType() &&
                 Objects.equals(getMessage(), that.getMessage()) &&
                 getStatus() == that.getStatus();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDateToSend(), getRecipient(), getRecipientType(), getMessage(), getStatus());
+        return Objects.hash(getId(), getScheduledDate(), getRecipient(), getNotificationType(), getMessage(), getStatus());
     }
 }

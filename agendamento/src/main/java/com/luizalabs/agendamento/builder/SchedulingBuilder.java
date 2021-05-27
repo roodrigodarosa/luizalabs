@@ -2,9 +2,9 @@ package com.luizalabs.agendamento.builder;
 
 import java.util.Date;
 
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.enums.RecipientTypeEnum;
-import com.luizalabs.agendamento.enums.StatusEnum;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
 
 public class SchedulingBuilder {
 
@@ -24,7 +24,7 @@ public class SchedulingBuilder {
     }
 
     public SchedulingBuilder dateToSend(Date dateToSend) {
-        scheduling.setDateToSend(dateToSend);
+        scheduling.setScheduledDate(dateToSend);
         return this;
     }
 
@@ -33,13 +33,13 @@ public class SchedulingBuilder {
         return this;
     }
 
-    public SchedulingBuilder recipientType(RecipientTypeEnum recipientTypeEnum) {
-        scheduling.setRecipientType(recipientTypeEnum);
+    public SchedulingBuilder recipientType(NotificationType notificationType) {
+        scheduling.setNotificationType(notificationType);
         return this;
     }
 
-    public SchedulingBuilder status(StatusEnum statusEnum) {
-        scheduling.setStatus(statusEnum);
+    public SchedulingBuilder status(NotificationStatus notificationStatus) {
+        scheduling.setStatus(notificationStatus);
         return this;
     }
 

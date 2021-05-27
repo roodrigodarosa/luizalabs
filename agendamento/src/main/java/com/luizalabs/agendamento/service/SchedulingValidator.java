@@ -2,21 +2,21 @@ package com.luizalabs.agendamento.service;
 
 import java.util.Date;
 
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
 
 public class SchedulingValidator {
 
     public static void validate(Scheduling scheduling) throws SchedulingBadRequestException {
         validateMandatoryFields(scheduling);
-        validateDateToSend(scheduling.getDateToSend());
+        validateDateToSend(scheduling.getScheduledDate());
     }
 
     private static void validateMandatoryFields(Scheduling scheduling) throws SchedulingBadRequestException {
         if (scheduling == null) {
             throw new SchedulingBadRequestException("Scheduling está nulo.");
         }
-        if (scheduling.getDateToSend() == null) {
+        if (scheduling.getScheduledDate() == null) {
             throw new SchedulingBadRequestException("Data de está nulo.");
         }
         if (scheduling.getRecipient() == null || scheduling.getRecipient().isEmpty()) {
@@ -25,7 +25,7 @@ public class SchedulingValidator {
         if (scheduling.getMessage() == null || scheduling.getMessage().isEmpty()) {
             throw new SchedulingBadRequestException("Mensagem está nula ou vazia.");
         }
-        if (scheduling.getRecipientType() == null) {
+        if (scheduling.getNotificationType() == null) {
             throw new SchedulingBadRequestException("Tipo de destinatário está nulo.");
         }
         if (scheduling.getStatus() == null) {

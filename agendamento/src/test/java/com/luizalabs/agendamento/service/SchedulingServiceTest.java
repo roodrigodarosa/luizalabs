@@ -18,10 +18,10 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.luizalabs.agendamento.builder.SchedulingBuilder;
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.enums.RecipientTypeEnum;
-import com.luizalabs.agendamento.enums.StatusEnum;
-import com.luizalabs.agendamento.exception.SchedulingNotFoundException;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
+import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
 import com.luizalabs.agendamento.repository.SchedulingRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -42,10 +42,10 @@ public class SchedulingServiceTest {
 
         assertThat(schedulingArgumentCaptor.getValue()).satisfies(savedScheduling -> {
             assertThat(savedScheduling.getId().equals(scheduling.getId()));
-            assertThat(savedScheduling.getDateToSend().equals(scheduling.getDateToSend()));
+            assertThat(savedScheduling.getScheduledDate().equals(scheduling.getScheduledDate()));
             assertThat(savedScheduling.getMessage().equals(scheduling.getMessage()));
             assertThat(savedScheduling.getRecipient().equals(scheduling.getRecipient()));
-            assertThat(savedScheduling.getRecipientType().equals(scheduling.getRecipientType()));
+            assertThat(savedScheduling.getNotificationType().equals(scheduling.getNotificationType()));
             assertThat(savedScheduling.getStatus().equals(scheduling.getStatus()));
         });
 
@@ -77,10 +77,10 @@ public class SchedulingServiceTest {
 
         assertThat(service.findById(scheduling.getId())).satisfies(findScheduling -> {
             assertThat(findScheduling.getId()).isEqualTo(scheduling.getId());
-            assertThat(findScheduling.getDateToSend()).isEqualTo(scheduling.getDateToSend());
+            assertThat(findScheduling.getScheduledDate()).isEqualTo(scheduling.getScheduledDate());
             assertThat(findScheduling.getMessage()).isEqualTo(scheduling.getMessage());
             assertThat(findScheduling.getRecipient()).isEqualTo(scheduling.getRecipient());
-            assertThat(findScheduling.getRecipientType()).isEqualTo(scheduling.getRecipientType());
+            assertThat(findScheduling.getNotificationType()).isEqualTo(scheduling.getNotificationType());
             assertThat(findScheduling.getStatus()).isEqualTo(scheduling.getStatus());
         });
 
@@ -96,8 +96,8 @@ public class SchedulingServiceTest {
                 .dateToSend(new Date(new Date().getTime() + 999999))
                 .message("Mensagem de agendamento-2")
                 .recipient("47999560651")
-                .recipientType(RecipientTypeEnum.WHATSAPP)
-                .status(StatusEnum.SENT)
+                .recipientType(NotificationType.WHATSAPP)
+                .status(NotificationStatus.SENT)
                 .build();
         List<Scheduling> schedulingList = Arrays.asList(scheduling, scheduling2);
 
@@ -105,17 +105,17 @@ public class SchedulingServiceTest {
 
         assertThat(service.findAll()).satisfies(findScheduling -> {
             assertThat(findScheduling.get(0).getId()).isEqualTo(scheduling.getId());
-            assertThat(findScheduling.get(0).getDateToSend()).isEqualTo(scheduling.getDateToSend());
+            assertThat(findScheduling.get(0).getScheduledDate()).isEqualTo(scheduling.getScheduledDate());
             assertThat(findScheduling.get(0).getMessage()).isEqualTo(scheduling.getMessage());
             assertThat(findScheduling.get(0).getRecipient()).isEqualTo(scheduling.getRecipient());
-            assertThat(findScheduling.get(0).getRecipientType()).isEqualTo(scheduling.getRecipientType());
+            assertThat(findScheduling.get(0).getNotificationType()).isEqualTo(scheduling.getNotificationType());
             assertThat(findScheduling.get(0).getStatus()).isEqualTo(scheduling.getStatus());
 
             assertThat(findScheduling.get(1).getId()).isEqualTo(scheduling2.getId());
-            assertThat(findScheduling.get(1).getDateToSend()).isEqualTo(scheduling2.getDateToSend());
+            assertThat(findScheduling.get(1).getScheduledDate()).isEqualTo(scheduling2.getScheduledDate());
             assertThat(findScheduling.get(1).getMessage()).isEqualTo(scheduling2.getMessage());
             assertThat(findScheduling.get(1).getRecipient()).isEqualTo(scheduling2.getRecipient());
-            assertThat(findScheduling.get(1).getRecipientType()).isEqualTo(scheduling2.getRecipientType());
+            assertThat(findScheduling.get(1).getNotificationType()).isEqualTo(scheduling2.getNotificationType());
             assertThat(findScheduling.get(1).getStatus()).isEqualTo(scheduling2.getStatus());
         });
 
@@ -129,8 +129,8 @@ public class SchedulingServiceTest {
                 .dateToSend(new Date(new Date().getTime() + 999999))
                 .message("Mensagem de agendamento")
                 .recipient("teste@luizalabs.com.br")
-                .recipientType(RecipientTypeEnum.EMAIL)
-                .status(StatusEnum.NOT_SENT)
+                .recipientType(NotificationType.EMAIL)
+                .status(NotificationStatus.NOT_SENT)
                 .build();
     }
 

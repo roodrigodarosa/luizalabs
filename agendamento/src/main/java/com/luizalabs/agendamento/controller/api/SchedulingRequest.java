@@ -1,14 +1,14 @@
-package com.luizalabs.agendamento.controller.dto;
+package com.luizalabs.agendamento.controller.api;
 
 import java.util.Date;
 
-public class SchedulingDTO {
+public class SchedulingRequest {
 
     private String id;
-    private Date dateToSend;
+    private Date scheduledDate;
     private String recipient;
-    private String recipientType;
-    private String status;
+    private String notificationType;
+    private String status = "SCHEDULED";
     private String message;
 
     public String getId() {
@@ -19,12 +19,12 @@ public class SchedulingDTO {
         this.id = id;
     }
 
-    public Date getDateToSend() {
-        return dateToSend;
+    public Date getScheduledDate() {
+        return scheduledDate;
     }
 
-    public void setDateToSend(Date dateToSend) {
-        this.dateToSend = dateToSend;
+    public void setScheduledDate(Date scheduledDate) {
+        this.scheduledDate = scheduledDate;
     }
 
     public String getRecipient() {
@@ -35,12 +35,12 @@ public class SchedulingDTO {
         this.recipient = recipient;
     }
 
-    public String getRecipientType() {
-        return recipientType;
+    public String getNotificationType() {
+        return notificationType;
     }
 
-    public void setRecipientType(String recipientType) {
-        this.recipientType = recipientType;
+    public void setNotificationType(String notificationType) {
+        this.notificationType = notificationType;
     }
 
     public String getStatus() {
@@ -58,4 +58,7 @@ public class SchedulingDTO {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
+
 }

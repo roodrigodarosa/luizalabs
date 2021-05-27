@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.converter;
+package com.luizalabs.agendamento.controller.api.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,18 +8,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import com.luizalabs.agendamento.builder.SchedulingBuilder;
-import com.luizalabs.agendamento.builder.SchedulingDTOBuilder;
-import com.luizalabs.agendamento.controller.dto.SchedulingDTO;
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.enums.RecipientTypeEnum;
-import com.luizalabs.agendamento.enums.StatusEnum;
-import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
+import com.luizalabs.agendamento.builder.SchedulingRequestBuilder;
+import com.luizalabs.agendamento.controller.api.SchedulingRequest;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
+import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
 
 public class SchedulingConverterTest {
 
     @Test
     public void whenConvertDtoToEntityThenReturn() throws Exception {
-        SchedulingDTO dto = SchedulingDTOBuilder.of().
+        SchedulingRequest dto = SchedulingRequestBuilder.of().
                 id("scheduling-id")
                 .dateToSend(new Date())
                 .message("Mensagem de agendamento")
@@ -27,12 +27,12 @@ public class SchedulingConverterTest {
                 .recipientType("EMAIL")
                 .status("NOT_SENT")
                 .build();
-        assertThat(SchedulingConverter.dtoToEntity(dto)).satisfies(scheduling -> {
+        assertThat(SchedulingConverter.requestToEntity(dto)).satisfies(scheduling -> {
             assertThat(scheduling.getId()).isEqualTo(scheduling.getId());
-            assertThat(scheduling.getDateToSend()).isEqualTo(dto.getDateToSend());
+            assertThat(scheduling.getScheduledDate()).isEqualTo(dto.getScheduledDate());
             assertThat(scheduling.getMessage()).isEqualTo(dto.getMessage());
             assertThat(scheduling.getRecipient()).isEqualTo(dto.getRecipient());
-            assertThat(scheduling.getRecipientType().name()).isEqualTo(dto.getRecipientType());
+            assertThat(scheduling.getNotificationType().name()).isEqualTo(dto.getNotificationType());
             assertThat(scheduling.getStatus().name()).isEqualTo(dto.getStatus());
         });
     }
@@ -44,22 +44,22 @@ public class SchedulingConverterTest {
                 .dateToSend(new Date())
                 .message("Mensagem de agendamento")
                 .recipient("teste@luizalabs.com.br")
-                .recipientType(RecipientTypeEnum.EMAIL)
-                .status(StatusEnum.NOT_SENT)
+                .recipientType(NotificationType.EMAIL)
+                .status(NotificationStatus.NOT_SENT)
                 .build();
-        assertThat(SchedulingConverter.entityToDto(scheduling)).satisfies(dto -> {
+        assertThat(SchedulingConverter.entityToRequest(scheduling)).satisfies(dto -> {
             assertThat(dto.getId()).isEqualTo(scheduling.getId());
-            assertThat(dto.getDateToSend()).isEqualTo(scheduling.getDateToSend());
+            assertThat(dto.getScheduledDate()).isEqualTo(scheduling.getScheduledDate());
             assertThat(dto.getMessage()).isEqualTo(scheduling.getMessage());
             assertThat(dto.getRecipient()).isEqualTo(scheduling.getRecipient());
-            assertThat(dto.getRecipientType()).isEqualTo(scheduling.getRecipientType().name());
+            assertThat(dto.getNotificationType()).isEqualTo(scheduling.getNotificationType().name());
             assertThat(dto.getStatus()).isEqualTo(scheduling.getStatus().name());
         });
     }
 
     @Test
     public void whenConvertDtoToEntityWithInvalidRecipientTypeThenException() throws Exception {
-        SchedulingDTO dto = SchedulingDTOBuilder.of().
+        SchedulingRequest dto = SchedulingRequestBuilder.of().
                 id("scheduling-id")
                 .dateToSend(new Date())
                 .message("Mensagem de agendamento")
@@ -68,7 +68,7 @@ public class SchedulingConverterTest {
                 .status("NOT_SENT")
                 .build();
 
-        Assertions.assertThatThrownBy(() ->  SchedulingConverter.dtoToEntity(dto))
+        Assertions.assertThatThrownBy(() ->  SchedulingConverter.requestToEntity(dto))
                 .isInstanceOf(SchedulingBadRequestException.class)
                 .hasMessage("Tipo de destinatário inválido: INVALID_TYPE");
 
@@ -76,7 +76,7 @@ public class SchedulingConverterTest {
 
     @Test
     public void whenConvertDtoToEntityWithInvalidStatusThenException() throws Exception {
-        SchedulingDTO dto = SchedulingDTOBuilder.of().
+        SchedulingRequest dto = SchedulingRequestBuilder.of().
                 id("scheduling-id")
                 .dateToSend(new Date())
                 .message("Mensagem de agendamento")
@@ -85,7 +85,7 @@ public class SchedulingConverterTest {
                 .status("INVALID_STATUS")
                 .build();
 
-        Assertions.assertThatThrownBy(() ->  SchedulingConverter.dtoToEntity(dto))
+        Assertions.assertThatThrownBy(() ->  SchedulingConverter.requestToEntity(dto))
                 .isInstanceOf(SchedulingBadRequestException.class)
                 .hasMessage("Status inválido: INVALID_STATUS");
 

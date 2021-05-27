@@ -6,10 +6,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import com.luizalabs.agendamento.builder.SchedulingBuilder;
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.enums.RecipientTypeEnum;
-import com.luizalabs.agendamento.enums.StatusEnum;
-import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.agendamento.model.enums.NotificationStatus;
+import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
 
 public class SchedulingValidatorTest {
 
@@ -30,7 +30,7 @@ public class SchedulingValidatorTest {
     @Test
     public void whenValidateSchedulingWithNullDateToSendThenReturnException() {
         Scheduling scheduling = buildScheduling();
-        scheduling.setDateToSend(null);
+        scheduling.setScheduledDate(null);
         Assertions.assertThatThrownBy(() -> SchedulingValidator.validate(scheduling))
                 .isInstanceOf(SchedulingBadRequestException.class)
                 .hasMessage("Data de está nulo.");
@@ -76,7 +76,7 @@ public class SchedulingValidatorTest {
     @Test
     public void whenValidateSchedulingWithNullRecepientTypeThenReturnException() {
         Scheduling scheduling = buildScheduling();
-        scheduling.setRecipientType(null);
+        scheduling.setNotificationType(null);
         Assertions.assertThatThrownBy(() -> SchedulingValidator.validate(scheduling))
                 .isInstanceOf(SchedulingBadRequestException.class)
                 .hasMessage("Tipo de destinatário está nulo.");
@@ -96,7 +96,7 @@ public class SchedulingValidatorTest {
     @Test
     public void whenValidateSchedulingWithDateToSendBeforeNowThenReturnException() {
         Scheduling scheduling = buildScheduling();
-        scheduling.setDateToSend(new Date(new Date().getTime() - 99999));
+        scheduling.setScheduledDate(new Date(new Date().getTime() - 99999));
 
         Assertions.assertThatThrownBy(() -> SchedulingValidator.validate(scheduling))
                 .isInstanceOf(SchedulingBadRequestException.class)
@@ -110,8 +110,8 @@ public class SchedulingValidatorTest {
                 .dateToSend(new Date(new Date().getTime() + 999999))
                 .message("Mensagem de agendamento")
                 .recipient("teste@luizalabs.com.br")
-                .recipientType(RecipientTypeEnum.EMAIL)
-                .status(StatusEnum.NOT_SENT)
+                .recipientType(NotificationType.EMAIL)
+                .status(NotificationStatus.NOT_SENT)
                 .build();
     }
 }

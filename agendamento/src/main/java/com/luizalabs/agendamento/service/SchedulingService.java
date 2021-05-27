@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
-import com.luizalabs.agendamento.exception.SchedulingNotFoundException;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
+import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
 import com.luizalabs.agendamento.repository.SchedulingRepository;
 
 @Service

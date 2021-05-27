@@ -14,9 +14,9 @@
     USE luizalabs;
     CREATE TABLE `scheduling` (
         `ID` varchar(36) NOT NULL,
-        `DATE_TO_SEND` datetime NOT NULL,
+        `SCHEDULED_DATE` datetime NOT NULL,
         `RECIPIENT` varchar(250) NOT NULL,
-        `RECIPIENT_TYPE` varchar(250) NOT NULL,
+        `NOTIFICATION_TYPE` varchar(250) NOT NULL,
         `STATUS` varchar(250) NOT NULL,
         `MESSAGE` varchar(1000) NOT NULL,
         PRIMARY KEY (`ID`)
@@ -32,9 +32,9 @@
     » Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
 ```
     {
-        "dateToSend": "2021-08-21T18:25:43-05:00",
+        "scheduledDate": "2021-08-21T18:25:43-05:00",
         "recipient": "teste@luizalabs.com.br",
-        "recipientType": "EMAIL",
+        "notificationType": "EMAIL",
         "message": "Teste de agendamento"
     }
 ```

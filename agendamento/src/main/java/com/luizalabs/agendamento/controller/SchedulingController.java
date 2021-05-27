@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luizalabs.agendamento.controller.dto.SchedulingDTO;
-import com.luizalabs.agendamento.converter.SchedulingConverter;
-import com.luizalabs.agendamento.domain.Scheduling;
-import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
-import com.luizalabs.agendamento.exception.SchedulingNotFoundException;
+import com.luizalabs.agendamento.controller.api.SchedulingRequest;
+import com.luizalabs.agendamento.controller.api.converter.SchedulingConverter;
+import com.luizalabs.agendamento.model.Scheduling;
+import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
+import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
 import com.luizalabs.agendamento.service.SchedulingService;
 
 @RestController
@@ -38,7 +38,7 @@ public class SchedulingController extends AbstractController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity findAll() {
         List<Scheduling> schedulingList = service.findAll();
-        return buildOK(SchedulingConverter.entityListToDtoList(schedulingList));
+        return buildOK(SchedulingConverter.entityListToRequestList(schedulingList));
     }
 
     /**
@@ -51,7 +51,7 @@ public class SchedulingController extends AbstractController {
     public ResponseEntity findById(@PathVariable String id) {
         try {
             Scheduling scheduling = service.findById(id);
-            return buildOK(SchedulingConverter.entityToDto(scheduling));
+            return buildOK(SchedulingConverter.entityToRequest(scheduling));
         } catch (SchedulingNotFoundException e) {
             return buildError(e, e.getStatus());
         }
@@ -64,9 +64,9 @@ public class SchedulingController extends AbstractController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity create(@RequestBody SchedulingDTO dto)  {
+    public ResponseEntity create(@RequestBody SchedulingRequest dto)  {
         try {
-            Scheduling scheduling = SchedulingConverter.dtoToEntity(dto);
+            Scheduling scheduling = SchedulingConverter.requestToEntity(dto);
             return buildCreated(service.save(scheduling));
         } catch (SchedulingBadRequestException e) {
             return buildError(e, e.getStatus());
