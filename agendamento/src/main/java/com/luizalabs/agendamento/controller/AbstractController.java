@@ -24,5 +24,4 @@ public class AbstractController {
         return ResponseEntity.status(status).body(e.getMessage());
     }
 
-
 }

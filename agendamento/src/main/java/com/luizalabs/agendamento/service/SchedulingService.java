@@ -20,23 +20,44 @@ public class SchedulingService {
         this.repository = repository;
     }
 
+    /**
+     * Persiste um novo agendamento.
+     * @param scheduling
+     * @return
+     * @throws SchedulingBadRequestException
+     */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Scheduling save(Scheduling scheduling) throws SchedulingBadRequestException {
         SchedulingValidator.validate(scheduling);
         return (Scheduling) repository.save(scheduling);
     }
 
+    /**
+     * Remover um determinado agendamento.
+     * @param id
+     * @throws SchedulingNotFoundException
+     */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void delete(String id) throws SchedulingNotFoundException {
         Scheduling scheduling = this.findById(id);
         repository.delete(scheduling);
     }
 
+    /**
+     * Retorna um determinado agendamento.
+     * @param id
+     * @return
+     * @throws SchedulingNotFoundException
+     */
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
     public Scheduling findById(String id) throws SchedulingNotFoundException {
         return repository.findById(id).orElseThrow(() -> new SchedulingNotFoundException("Agendamento não encontrado: " + id));
     }
 
+    /**
+     * Retorna todos os agendamentos.
+     * @return
+     */
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
     public List<Scheduling> findAll() {
         return (List<Scheduling>) repository.findAll();

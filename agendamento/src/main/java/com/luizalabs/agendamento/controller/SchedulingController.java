@@ -30,6 +30,10 @@ public class SchedulingController extends AbstractController {
         this.service = service;
     }
 
+    /**
+     * Retorna todos os agendamentos,
+     * @return
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity findAll() {
@@ -37,6 +41,11 @@ public class SchedulingController extends AbstractController {
         return buildOK(SchedulingConverter.entityListToDtoList(schedulingList));
     }
 
+    /**
+     * Retorna um determinado agendamento.
+     * @param id
+     * @return
+     */
     @GetMapping(path = {"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity findById(@PathVariable String id) {
@@ -48,6 +57,11 @@ public class SchedulingController extends AbstractController {
         }
     }
 
+    /**
+     * Persiste um novo agendamento.
+     * @param dto
+     * @return
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity create(@RequestBody SchedulingDTO dto)  {
@@ -59,6 +73,12 @@ public class SchedulingController extends AbstractController {
         }
     }
 
+
+    /**
+     * Remove um determinado agendamento.
+     * @param id
+     * @return
+     */
     @DeleteMapping(path = {"/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity delete(@PathVariable String id) {
