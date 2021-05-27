@@ -3,8 +3,11 @@
 
 - Banco de dados Utilizado é MySQL
 - Para alterar usuário e senha do banco de dados, deve-se alterar o arquivo `application.properties` dentro de `agendamento/src/main/resources`
+
 -- Alterar a variável _spring.datasource.username_ com o usuário do banco de dados.
+
 -- Alterar a variável _spring.datasource.password_ com a senha do banco de dados.
+
 - Executar o script abaixo para criação do banco:
 ```
     CREATE DATABASE luizalabs;
@@ -22,10 +25,10 @@
 
 ## _2 - Inicialização_
 - Dentro do diretório raiz `agendamento`, executar o comando maven `mvn spring-boot:run`
-- Serviço está disponível em http://localhost:8080/schedulings
+- Serviço estará disponível em http://localhost:8080/schedulings
 ## _3 - Utilizando a aplicação_
 - Criação de agendamento:
-1) Utilizar o endpoint  `@POST /schedulings` --- http://localhost:8080/schedulings
+1) Utilizar o endpoint  `@POST /schedulings` -> http://localhost:8080/schedulings
 ```
     {
         "dateToSend": "2021-08-21T18:25:43-05:00",
@@ -35,17 +38,17 @@
     }
 ```
 - Consulta de todos agendamentos:
--- Utilizar o endpoint  `@GET /schedulings` --- http://localhost:8080/schedulings
+-- Utilizar o endpoint  `@GET /schedulings` -> http://localhost:8080/schedulings
 
     -- Irá retornar uma lista de agendamentos cadastrados.
 
 - Consulta de um determinado agendamento:
---  Utilizar o endpoint  `@GET /schedulings/{id}` --- http://localhost:8080/schedulings/{id}
+--  Utilizar o endpoint  `@GET /schedulings/{id}` -> http://localhost:8080/schedulings/{id}
 
   -- Irá retornar o agendamento solicitado.
 
-- Remover de um determinado agendamento:
--- Utilizar o endpoint  `@DELETE /schedulings/{id}` --- http://localhost:8080/schedulings/{id}
+- Remover um determinado agendamento:
+-- Utilizar o endpoint  `@DELETE /schedulings/{id}` -> http://localhost:8080/schedulings/{id}
 
   -- Irá remover o agendamento solicitado.
 
