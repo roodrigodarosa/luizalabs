@@ -1,9 +1,9 @@
-package com.luizalabs.agendamento.service;
+package com.luizalabs.notification.service;
 
 import java.util.Date;
 
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
 
 public class SchedulingValidator {
 

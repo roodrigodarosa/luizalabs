@@ -1,14 +1,14 @@
-package com.luizalabs.agendamento.service;
+package com.luizalabs.notification.service;
 
 import java.util.Date;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.model.enums.NotificationStatus;
-import com.luizalabs.agendamento.model.enums.NotificationType;
-import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.model.enums.NotificationStatus;
+import com.luizalabs.notification.model.enums.NotificationType;
+import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
 
 public class SchedulingValidatorTest {
 

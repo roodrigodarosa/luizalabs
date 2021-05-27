@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.controller;
+package com.luizalabs.notification.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

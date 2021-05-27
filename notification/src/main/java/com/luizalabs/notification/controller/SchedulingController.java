@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.controller;
+package com.luizalabs.notification.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luizalabs.agendamento.controller.api.SchedulingRequest;
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.service.SchedulingService;
-import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
-import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
+import com.luizalabs.notification.controller.api.SchedulingRequest;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.service.SchedulingService;
+import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.service.exception.SchedulingNotFoundException;
 
 @RestController
 @RequestMapping({"/schedulings"})

@@ -1,10 +1,10 @@
-package com.luizalabs.agendamento.controller.api;
+package com.luizalabs.notification.controller.api;
 
 import java.util.Date;
 
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.model.enums.NotificationStatus;
-import com.luizalabs.agendamento.model.enums.NotificationType;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.model.enums.NotificationStatus;
+import com.luizalabs.notification.model.enums.NotificationType;
 
 public class SchedulingRequest {
 

@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.model.enums;
+package com.luizalabs.notification.model.enums;
 
 public enum NotificationType {
     EMAIL,

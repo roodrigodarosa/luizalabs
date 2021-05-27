@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.service;
+package com.luizalabs.notification.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -17,11 +17,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.model.enums.NotificationStatus;
-import com.luizalabs.agendamento.model.enums.NotificationType;
-import com.luizalabs.agendamento.repository.SchedulingRepository;
-import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.model.enums.NotificationStatus;
+import com.luizalabs.notification.model.enums.NotificationType;
+import com.luizalabs.notification.repository.SchedulingRepository;
+import com.luizalabs.notification.service.exception.SchedulingNotFoundException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SchedulingServiceTest {

@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.service;
+package com.luizalabs.notification.service;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.luizalabs.agendamento.model.Scheduling;
-import com.luizalabs.agendamento.service.exception.SchedulingBadRequestException;
-import com.luizalabs.agendamento.service.exception.SchedulingNotFoundException;
-import com.luizalabs.agendamento.repository.SchedulingRepository;
+import com.luizalabs.notification.model.Scheduling;
+import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.service.exception.SchedulingNotFoundException;
+import com.luizalabs.notification.repository.SchedulingRepository;
 
 @Service
 public class SchedulingService {
@@ -24,7 +24,7 @@ public class SchedulingService {
      * Persiste um novo agendamento.
      * @param scheduling
      * @return
-     * @throws SchedulingBadRequestException
+     * @throws com.luizalabs.notification.service.exception.SchedulingBadRequestException
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Scheduling save(Scheduling scheduling) throws SchedulingBadRequestException {
@@ -35,7 +35,7 @@ public class SchedulingService {
     /**
      * Remover um determinado agendamento.
      * @param id
-     * @throws SchedulingNotFoundException
+     * @throws com.luizalabs.notification.service.exception.SchedulingNotFoundException
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void delete(String id) throws SchedulingNotFoundException {
