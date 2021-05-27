@@ -1,35 +1,44 @@
 # Luiza Labs 
-## _1 - Criando o banco de dados_
+## _1 - Pré requisitos_
 
-- Banco de dados Utilizado é MySQL
-- Para alterar usuário e senha do banco de dados, deve-se alterar o arquivo `application.properties` dentro de `notification/src/main/resources`
+ - Java 11
+ - Maven
+ - Docker
 
-    » Alterar a variável `spring.datasource.username` com o usuário do banco de dados.
 
-    » Alterar a variável `spring.datasource.password` com a senha do banco de dados.
-
-- Executar o script abaixo para criação do banco:
+ ##  _2- Build e testes_
+##### Para realizar o build feito pelo maven, utilize o comando:
 ```
-    CREATE DATABASE luizalabs;
-    USE luizalabs;
-    CREATE TABLE `scheduling` (
-        `ID` varchar(36) NOT NULL,
-        `SCHEDULED_DATE` datetime NOT NULL,
-        `RECIPIENT` varchar(250) NOT NULL,
-        `NOTIFICATION_TYPE` varchar(250) NOT NULL,
-        `STATUS` varchar(250) NOT NULL,
-        `MESSAGE` varchar(1000) NOT NULL,
-        PRIMARY KEY (`ID`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+mvn clean install
+```
+
+Obs.: Junto com este comando acima, serão rodados os testes unitários.
+
+##### Para executar apenas testes, utilize:
+```
+mvn clean test
+```
+##### Para executar uma classe específica de teste, utilize:
+```
+mvn clean test -Dtest=SchedulingServiceTest
+```
+##### Para executar um método específico de teste, utilize:
+```
+mvn clean test -Dtest=SchedulingServiceTest#whenSaveSchedulingThenReturnOk
 ```
 
 ## _2 - Inicialização_
-- Dentro do diretório raiz `notification`, executar o comando maven `mvn spring-boot:run`
-- Serviço estará disponível em http://localhost:8080/schedulings
-## _3 - Utilizando a aplicação_
-- Criação de agendamento:
+-  Após realizar o build do projeto, navegue até a pasta `docker` e execute:
 
-    » Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
+```
+docker-compose -f compose.yml up --build
+```
+- Serviço estará disponível em http://localhost:8080/schedulings
+
+## _3 - Utilizando a aplicação_
+
+#####Criação de agendamento:
+   Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
 ```
     {
         "scheduledDate": "2021-08-21T18:25:43-05:00",
@@ -38,27 +47,20 @@
         "message": "Teste de agendamento"
     }
 ```
-- Consulta de todos agendamentos:
+#####Consulta de todos agendamentos:
 
-    » Utilizar o endpoint  `@GET /schedulings` - http://localhost:8080/schedulings
+ Utilizar o endpoint  `@GET /schedulings` - http://localhost:8080/schedulings
 
-    » Irá retornar uma lista de agendamentos cadastrados.
+- Irá retornar os agendamentos cadastrados.
 
-- Consulta de um determinado agendamento:
+##### Consulta de um determinado agendamento:
 
-    »  Utilizar o endpoint  `@GET /schedulings/{id}` - http://localhost:8080/schedulings/{id}
+Utilizar o endpoint  `@GET /schedulings/{id}` - http://localhost:8080/schedulings/{id}
 
-    » Irá retornar o agendamento solicitado.
+- Irá retornar o agendamento solicitado.
 
-- Remover um determinado agendamento:
+##### Remover um determinado agendamento:
 
-    » Utilizar o endpoint  `@DELETE /schedulings/{id}` - http://localhost:8080/schedulings/{id}
+Utilizar o endpoint  `@DELETE /schedulings/{id}` - http://localhost:8080/schedulings/{id}
 
-    » Irá remover o agendamento solicitado.
-
-## _4 - Build e testes_
-- Para realizar build do projeto por inteiro, basta executar no diretório raiz(/notification) `mvn clean install`, junto com este comando serão rodados os testes.
-
-- Para executar apenas testes, pode ser executado também `mvn clean test`. E no caso de preferir executar apenas um teste específico, basta executar `mvn clean test -Dtest=SchedulingServiceTest` ou `mvn clean test -Dtest=SchedulingServiceTest#whenSaveSchedulingThenReturnOk`
-
-
+- Irá remover o agendamento solicitado.
