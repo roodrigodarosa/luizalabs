@@ -1,9 +1,9 @@
-package com.luizalabs.notification.service;
+package com.luizalabs.notification.usecases;
 
 import java.util.Date;
 
-import com.luizalabs.notification.model.Scheduling;
-import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.adapters.repository.entity.Scheduling;
+import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 
 public class SchedulingValidator {
 

@@ -1,4 +1,4 @@
-package com.luizalabs.notification.model;
+package com.luizalabs.notification.adapters.repository.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,9 +13,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.luizalabs.notification.controller.api.SchedulingRequest;
-import com.luizalabs.notification.model.enums.NotificationStatus;
-import com.luizalabs.notification.model.enums.NotificationType;
+import com.luizalabs.notification.adapters.api.models.SchedulingRequest;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
 
 @Entity
 @Table(name = "scheduling")

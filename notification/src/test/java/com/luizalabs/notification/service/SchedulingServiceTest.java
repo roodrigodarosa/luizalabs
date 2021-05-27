@@ -17,11 +17,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.luizalabs.notification.model.Scheduling;
-import com.luizalabs.notification.model.enums.NotificationStatus;
-import com.luizalabs.notification.model.enums.NotificationType;
-import com.luizalabs.notification.repository.SchedulingRepository;
-import com.luizalabs.notification.service.exception.SchedulingNotFoundException;
+import com.luizalabs.notification.adapters.repository.entity.Scheduling;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.adapters.repository.SchedulingRepository;
+import com.luizalabs.notification.usecases.exceptions.SchedulingNotFoundException;
+import com.luizalabs.notification.usecases.SchedulingService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SchedulingServiceTest {

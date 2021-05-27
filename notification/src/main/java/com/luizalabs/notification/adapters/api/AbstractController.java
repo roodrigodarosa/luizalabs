@@ -1,4 +1,4 @@
-package com.luizalabs.notification.controller;
+package com.luizalabs.notification.adapters.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

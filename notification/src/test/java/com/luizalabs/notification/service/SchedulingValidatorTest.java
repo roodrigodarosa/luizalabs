@@ -5,10 +5,11 @@ import java.util.Date;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import com.luizalabs.notification.model.Scheduling;
-import com.luizalabs.notification.model.enums.NotificationStatus;
-import com.luizalabs.notification.model.enums.NotificationType;
-import com.luizalabs.notification.service.exception.SchedulingBadRequestException;
+import com.luizalabs.notification.adapters.repository.entity.Scheduling;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
+import com.luizalabs.notification.usecases.SchedulingValidator;
 
 public class SchedulingValidatorTest {
 

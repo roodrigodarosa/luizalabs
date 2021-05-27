@@ -1,4 +1,4 @@
-package com.luizalabs.notification.service.exception;
+package com.luizalabs.notification.usecases.exceptions;
 
 public class SchedulingBadRequestException extends SchedulingException {
 

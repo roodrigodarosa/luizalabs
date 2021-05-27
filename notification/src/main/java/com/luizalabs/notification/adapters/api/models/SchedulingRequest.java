@@ -1,10 +1,10 @@
-package com.luizalabs.notification.controller.api;
+package com.luizalabs.notification.adapters.api.models;
 
 import java.util.Date;
 
-import com.luizalabs.notification.model.Scheduling;
-import com.luizalabs.notification.model.enums.NotificationStatus;
-import com.luizalabs.notification.model.enums.NotificationType;
+import com.luizalabs.notification.adapters.repository.entity.Scheduling;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
 
 public class SchedulingRequest {
 

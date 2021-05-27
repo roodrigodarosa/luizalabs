@@ -1,4 +1,4 @@
-package com.luizalabs.notification.model.enums;
+package com.luizalabs.notification.adapters.repository.entity.enums;
 
 public enum NotificationStatus {
     NOT_SENT,
