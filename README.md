@@ -1,5 +1,5 @@
 # Luiza Labs 
-## _1 -Criando o banco de dados_
+## _1 - Criando o banco de dados_
 
 - Banco de dados Utilizado é MySQL
 - Para alterar usuário e senha do banco de dados, deve-se alterar o arquivo `application.properties` dentro de `agendamento/src/main/resources`
@@ -20,9 +20,9 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
-## _2 -Inicialização_
+## _2 - Inicialização_
 - Dentro do diretório raiz `agendamento`, executar o comando maven `mvn spring-boot:run`
-- Acessar http://localhost:8080/schedulings
+- Serviço está disponível em http://localhost:8080/schedulings
 ## _3 - Utilizando a aplicação_
 - Criação de agendamento:
 1) Utilizar o endpoint  `@POST /schedulings` --- http://localhost:8080/schedulings
@@ -36,15 +36,18 @@
 ```
 - Consulta de todos agendamentos:
 -- Utilizar o endpoint  `@GET /schedulings` --- http://localhost:8080/schedulings
-Irá retornar uma lista de agendamentos cadastrados.
+
+* Irá retornar uma lista de agendamentos cadastrados.
 
 - Consulta de um determinado agendamento:
 --  Utilizar o endpoint  `@GET /schedulings/{id}` --- http://localhost:8080/schedulings/{id}
-Irá retornar o agendamento solicitado.
+
+* Irá retornar o agendamento solicitado.
 
 - Remover de um determinado agendamento:
 -- Utilizar o endpoint  `@DELETE /schedulings/{id}` --- http://localhost:8080/schedulings/{id}
-Irá remover o agendamento solicitado.
+
+* Irá remover o agendamento solicitado.
 
 ## _4 - Build e testes_
 - Para realizar build do projeto por inteiro, basta executar no diretório raiz `mvn clean install`, junto com este comando serão rodados os testes 
