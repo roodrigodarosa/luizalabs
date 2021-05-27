@@ -1,4 +1,3 @@
-# Luiza Labs 
 ## _1 - Pré requisitos_
 
  - Java 11
@@ -12,7 +11,7 @@
 mvn clean install
 ```
 
-Obs.: Junto com este comando acima, serão rodados os testes unitários.
+Obs.: Junto com o comando acima, serão rodados os testes unitários.
 
 ##### Para executar apenas testes, utilize:
 ```
@@ -37,7 +36,8 @@ docker-compose -f compose.yml up --build
 
 ## _3 - Utilizando a aplicação_
 
-#####Criação de agendamento:
+##### Criação de agendamento:
+
    Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
 ```
     {
@@ -47,7 +47,8 @@ docker-compose -f compose.yml up --build
         "message": "Teste de agendamento"
     }
 ```
-#####Consulta de todos agendamentos:
+
+##### Consulta de todos agendamentos:
 
  Utilizar o endpoint  `@GET /schedulings` - http://localhost:8080/schedulings
 
