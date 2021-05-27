@@ -1,13 +1,14 @@
-package com.luizalabs.agendamento.controller.converter;
+package com.luizalabs.agendamento.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.luizalabs.agendamento.controller.builder.SchedulingBuilder;
-import com.luizalabs.agendamento.controller.builder.SchedulingDTOBuilder;
+import com.luizalabs.agendamento.builder.SchedulingBuilder;
+import com.luizalabs.agendamento.builder.SchedulingDTOBuilder;
 import com.luizalabs.agendamento.controller.dto.SchedulingDTO;
 import com.luizalabs.agendamento.domain.Scheduling;
 import com.luizalabs.agendamento.enums.RecipientTypeEnum;
+import com.luizalabs.agendamento.enums.StatusEnum;
 import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
 
 public class SchedulingConverter {
@@ -18,6 +19,7 @@ public class SchedulingConverter {
                 .dateToSend(dto.getDateToSend())
                 .recipient(dto.getRecipient())
                 .recipientType(converterRecipientType(dto.getRecipientType()))
+                .status(converterStatus(dto.getStatus()))
                 .message(dto.getMessage())
                 .build();
     }
@@ -44,10 +46,24 @@ public class SchedulingConverter {
 
 
     private static RecipientTypeEnum converterRecipientType(String type) throws SchedulingBadRequestException {
+        if(type == null){
+            return null;
+        }
         try {
             return RecipientTypeEnum.valueOf(type.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new SchedulingBadRequestException("Tipo de destinatário inválido: " + type);
+        }
+    }
+    private static StatusEnum converterStatus(String status) throws SchedulingBadRequestException {
+
+        if(status == null){
+            return null;
+        }
+        try {
+            return StatusEnum.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new SchedulingBadRequestException("Status inválido: " + status);
         }
     }
 }

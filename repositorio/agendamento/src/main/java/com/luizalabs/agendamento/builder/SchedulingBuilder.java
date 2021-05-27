@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.controller.builder;
+package com.luizalabs.agendamento.builder;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class SchedulingBuilder {
 
     private Scheduling scheduling;
 
-    private SchedulingBuilder() {
+    public SchedulingBuilder() {
         scheduling = new Scheduling();
     }
 

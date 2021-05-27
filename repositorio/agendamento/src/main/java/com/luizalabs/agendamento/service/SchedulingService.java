@@ -15,16 +15,14 @@ import com.luizalabs.agendamento.repository.SchedulingRepository;
 public class SchedulingService {
 
     private SchedulingRepository repository;
-    private SchedulingValidator validator;
 
-    public SchedulingService(SchedulingRepository repository, SchedulingValidator validator) {
+    public SchedulingService(SchedulingRepository repository) {
         this.repository = repository;
-        this.validator = validator;
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Scheduling save(Scheduling scheduling) throws SchedulingBadRequestException {
-        validator.validate(scheduling);
+        SchedulingValidator.validate(scheduling);
         return (Scheduling) repository.save(scheduling);
     }
 

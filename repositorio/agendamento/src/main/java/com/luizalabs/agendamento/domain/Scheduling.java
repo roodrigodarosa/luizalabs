@@ -12,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,6 +20,7 @@ import com.luizalabs.agendamento.enums.RecipientTypeEnum;
 import com.luizalabs.agendamento.enums.StatusEnum;
 
 @Entity
+@Table(name = "scheduling")
 public class Scheduling implements Serializable {
 
     private static final long serialVersionUID = 1L;

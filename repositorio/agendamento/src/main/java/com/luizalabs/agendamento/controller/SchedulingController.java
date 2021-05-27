@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luizalabs.agendamento.controller.converter.SchedulingConverter;
 import com.luizalabs.agendamento.controller.dto.SchedulingDTO;
+import com.luizalabs.agendamento.converter.SchedulingConverter;
 import com.luizalabs.agendamento.domain.Scheduling;
 import com.luizalabs.agendamento.exception.SchedulingBadRequestException;
 import com.luizalabs.agendamento.exception.SchedulingNotFoundException;

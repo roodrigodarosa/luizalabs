@@ -1,4 +1,4 @@
-package com.luizalabs.agendamento.controller.builder;
+package com.luizalabs.agendamento.builder;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ public class SchedulingDTOBuilder {
 
     private SchedulingDTO schedulingDTO;
 
-    private SchedulingDTOBuilder() {
+    public SchedulingDTOBuilder() {
         schedulingDTO = new SchedulingDTO();
     }
 
