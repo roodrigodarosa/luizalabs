@@ -28,7 +28,8 @@
 - Serviço estará disponível em http://localhost:8080/schedulings
 ## _3 - Utilizando a aplicação_
 - Criação de agendamento:
-1) Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
+
+    » Utilizar o endpoint  `@POST /schedulings` - http://localhost:8080/schedulings
 ```
     {
         "dateToSend": "2021-08-21T18:25:43-05:00",
