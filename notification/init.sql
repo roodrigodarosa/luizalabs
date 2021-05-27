@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS luizalabs;
+
+USE luizalabs;
+
+CREATE TABLE IF NOT EXISTS `scheduling` (
+    `ID` varchar(36) NOT NULL,
+    `SCHEDULED_DATE` datetime NOT NULL,
+    `RECIPIENT` varchar(250) NOT NULL,
+    `NOTIFICATION_TYPE` varchar(250) NOT NULL,
+    `STATUS` varchar(250) NOT NULL,
+    `MESSAGE` varchar(1000) NOT NULL,
+    PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

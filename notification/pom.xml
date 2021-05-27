@@ -9,12 +9,13 @@
         <relativePath/>
     </parent>
     <groupId>com.luizalabs</groupId>
-    <artifactId>notification</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>notification-luizalabs</artifactId>
+    <version>0.1</version>
     <packaging>jar</packaging>
     <name>notification</name>
     <description>Notification @ Luiza Labs</description>
     <properties>
+        <exec.mainClass>com.luizalabs.notification.NotificationApplication</exec.mainClass>
         <java.version>11</java.version>
     </properties>
     <dependencies>
@@ -68,6 +69,21 @@
                         <version>2.18.1</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.luizalabs.notification.NotificationApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
