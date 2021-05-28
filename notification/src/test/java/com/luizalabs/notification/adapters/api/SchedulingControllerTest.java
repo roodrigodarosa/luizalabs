@@ -24,8 +24,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.luizalabs.notification.adapters.repository.entity.Scheduling;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.adapters.repository.entity.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.NotificationType;
 import com.luizalabs.notification.usecases.SchedulingService;
 import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 import com.luizalabs.notification.usecases.exceptions.SchedulingNotFoundException;
@@ -95,6 +95,7 @@ public class SchedulingControllerTest {
         String json ="   {\n"
                 + "        \"scheduledDate\": \"2021-08-21T18:25:43-05:00\",\n"
                 + "        \"recipient\": \"teste@luizalabs.com.br\",\n"
+                + "        \"status\": \"SENT_WITH_ERROR\",\n"
                 + "        \"notificationType\": \"EMAIL\",\n"
                 + "        \"message\": \"Teste de agendamento\"\n"
                 + "    }";
@@ -115,7 +116,7 @@ public class SchedulingControllerTest {
         String json ="   {\n"
                 + "        \"scheduledDate\": \"2021-08-21T18:25:43-05:00\",\n"
                 + "        \"recipient\": \"teste@luizalabs.com.br\",\n"
-                + "        \"notificationType\": \"STATUS-ERRADO\",\n"
+                + "        \"notificationType\": \"NOTIFICATION-TYPE-ERRADO\",\n"
                 + "        \"message\": \"Teste de agendamento\"\n"
                 + "    }";
         when(service.save(any(Scheduling.class))).thenThrow(new SchedulingBadRequestException("Error"));

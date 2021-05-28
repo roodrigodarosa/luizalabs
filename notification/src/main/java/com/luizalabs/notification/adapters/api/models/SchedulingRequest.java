@@ -3,8 +3,8 @@ package com.luizalabs.notification.adapters.api.models;
 import java.util.Date;
 
 import com.luizalabs.notification.adapters.repository.entity.Scheduling;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.adapters.repository.entity.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.NotificationType;
 import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 
 public class SchedulingRequest {

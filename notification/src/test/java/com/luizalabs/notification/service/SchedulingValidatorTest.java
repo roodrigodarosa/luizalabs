@@ -6,8 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import com.luizalabs.notification.adapters.repository.entity.Scheduling;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.adapters.repository.entity.NotificationStatus;
+import com.luizalabs.notification.adapters.repository.entity.NotificationType;
 import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 import com.luizalabs.notification.usecases.SchedulingValidator;
 
@@ -24,7 +24,7 @@ public class SchedulingValidatorTest {
     public void whenValidateSchedulingWithNullEntityThenReturnException() {
         Assertions.assertThatThrownBy(() -> SchedulingValidator.validate(null))
                 .isInstanceOf(SchedulingBadRequestException.class)
-                .hasMessage("Scheduling está nulo.");
+                .hasMessage("Agendamento está nulo.");
     }
 
     @Test

@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.luizalabs.notification.adapters.api.models.SchedulingRequest;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
-import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
 
 @Entity
 @Table(name = "scheduling")

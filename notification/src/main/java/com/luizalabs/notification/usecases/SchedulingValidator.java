@@ -14,7 +14,7 @@ public class SchedulingValidator {
 
     private static void validateMandatoryFields(Scheduling scheduling) throws SchedulingBadRequestException {
         if (scheduling == null) {
-            throw new SchedulingBadRequestException("Scheduling está nulo.");
+            throw new SchedulingBadRequestException("Agendamento está nulo.");
         }
         if (scheduling.getScheduledDate() == null) {
             throw new SchedulingBadRequestException("Data de agendamento está nulo.");

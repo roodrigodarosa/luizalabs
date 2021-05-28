@@ -1,4 +1,4 @@
-package com.luizalabs.notification.adapters.repository.entity.enums;
+package com.luizalabs.notification.adapters.repository.entity;
 
 import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 
