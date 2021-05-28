@@ -21,7 +21,6 @@
         <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
         <assertj-core.version>3.19.0</assertj-core.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <surefire-junit47.version>2.18.1</surefire-junit47.version>
     </properties>
 
     <dependencies>
@@ -78,10 +77,9 @@
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
-                        <version>${surefire-junit47.version}</version>
+                        <version>${maven-surefire-plugin.version}</version>
                     </dependency>
                 </dependencies>
-
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -99,7 +97,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-
     </build>
 
 </project>
