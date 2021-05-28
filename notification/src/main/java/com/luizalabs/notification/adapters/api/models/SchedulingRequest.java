@@ -5,6 +5,7 @@ import java.util.Date;
 import com.luizalabs.notification.adapters.repository.entity.Scheduling;
 import com.luizalabs.notification.adapters.repository.entity.enums.NotificationStatus;
 import com.luizalabs.notification.adapters.repository.entity.enums.NotificationType;
+import com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException;
 
 public class SchedulingRequest {
 
@@ -69,14 +70,14 @@ public class SchedulingRequest {
         return this;
     }
 
-    public Scheduling toEntity(){
+    public Scheduling toEntity() throws SchedulingBadRequestException {
         return new Scheduling()
                 .setId(getId())
                 .setScheduledDate(getScheduledDate())
-                .setNotificationType(NotificationType.valueOf(getNotificationType()))
+                .setNotificationType(NotificationType.get(getNotificationType()))
                 .setRecipient(getRecipient())
                 .setMessage(getMessage())
-                .setStatus(NotificationStatus.valueOf(getStatus()));
+                .setStatus(NotificationStatus.get(getStatus()));
     }
 
 }

@@ -111,6 +111,6 @@ public class SchedulingValidatorTest {
                 .setMessage("Mensagem de agendamento")
                 .setRecipient("teste@luizalabs.com.br")
                 .setNotificationType(NotificationType.EMAIL)
-                .setStatus(NotificationStatus.NOT_SENT);
+                .setStatus(NotificationStatus.SENT_WITH_ERROR);
     }
 }

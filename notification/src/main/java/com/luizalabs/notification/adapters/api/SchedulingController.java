@@ -75,7 +75,6 @@ public class SchedulingController extends AbstractController {
         }
     }
 
-
     /**
      * Remove um determinado agendamento.
      * @param id
