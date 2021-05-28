@@ -24,7 +24,7 @@ public class SchedulingService {
      * Persiste um novo agendamento.
      * @param scheduling
      * @return
-     * @throws com.luizalabs.notification.usecases.exceptions.SchedulingBadRequestException
+     * @throws SchedulingBadRequestException
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public Scheduling save(Scheduling scheduling) throws SchedulingBadRequestException {
@@ -33,7 +33,7 @@ public class SchedulingService {
     }
 
     /**
-     * Remover um determinado agendamento.
+     * Remove um determinado agendamento.
      * @param id
      * @throws com.luizalabs.notification.usecases.exceptions.SchedulingNotFoundException
      */
@@ -60,7 +60,7 @@ public class SchedulingService {
      */
     @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
     public List<Scheduling> findAll() {
-        return (List<Scheduling>) repository.findAll();
+        return repository.findAll();
     }
 
 }
