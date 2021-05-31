@@ -5,7 +5,7 @@
  - Docker
 
 
- ##  _2- Build e testes_
+ ##  _2 - Build e testes_
 ##### Para realizar o build feito pelo maven, utilize o comando:
 ```
 mvn clean install
@@ -26,7 +26,7 @@ mvn clean test -Dtest=SchedulingServiceTest
 mvn clean test -Dtest=SchedulingServiceTest#whenSaveSchedulingThenReturnOk
 ```
 
-## _2 - Inicialização_
+## _3 - Inicialização_
 -  Após realizar o build do projeto, navegue até a pasta `docker` e execute:
 
 ```
@@ -34,7 +34,7 @@ docker-compose -f compose.yml up --build
 ```
 - Serviço estará disponível em http://localhost:8080/schedulings
 
-## _3 - Utilizando a aplicação_
+## _4 - Utilizando a aplicação_
 
 ##### Criação de agendamento:
 
